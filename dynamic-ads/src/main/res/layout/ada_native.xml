@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright 2022 Pranav Pandey
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ada_native_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.pranavpandey.android.dynamic.support.widget.DynamicCardView
+        style="@style/Widget.DynamicApp.Card">
+
+        <com.google.android.gms.ads.nativead.NativeAdView
+            style="@style/Widget.DynamicApp.Content.Card"
+            android:id="@+id/ada_native_ad">
+
+            <LinearLayout
+                style="@style/Widget.DynamicApp.Content.Row.Vertical"
+                android:id="@+id/ada_native_layout">
+
+                <com.pranavpandey.android.dynamic.support.widget.DynamicTextView
+                    style="@style/TextAppearance.DynamicApp.Caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="@string/ada_title" />
+
+                <LinearLayout
+                    style="@style/Widget.DynamicApp.Content.Row.Horizontal"
+                    android:layout_marginTop="@dimen/ads_margin_tiny">
+
+                    <com.pranavpandey.android.dynamic.support.widget.DynamicImageView
+                        style="@style/Widget.DynamicApp.Image.Info.Big"
+                        android:id="@+id/ada_native_icon"
+                        app:adt_colorType="none" />
+
+                    <LinearLayout
+                        style="@style/Widget.DynamicApp.Content.Row.Vertical.Center">
+
+                        <com.pranavpandey.android.dynamic.support.widget.DynamicTextView
+                            style="@style/TextAppearance.DynamicApp.Headline5.Card.Info"
+                            android:id="@+id/ada_native_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <com.pranavpandey.android.dynamic.support.widget.DynamicTextView
+                            style="@style/TextAppearance.DynamicApp.Subtitle1"
+                            android:id="@+id/ada_native_secondary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            style="@style/Widget.DynamicApp.Content.Row.Vertical"
+                            android:layout_marginTop="@dimen/ads_margin_tiny">
+
+                            <com.pranavpandey.android.dynamic.support.widget.DynamicTextView
+                                style="@style/TextAppearance.DynamicApp.Body1"
+                                android:id="@+id/ada_native_body"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <com.pranavpandey.android.dynamic.support.widget.DynamicRatingBar
+                                style="?attr/ratingBarStyleSmall"
+                                android:id="@+id/ada_native_rating_bar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:adt_colorType="primary" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Widget.DynamicApp.Content.Row.Horizontal"
+                    android:layout_marginTop="@dimen/ads_margin_regular">
+
+                    <com.google.android.gms.ads.nativead.MediaView
+                        android:id="@+id/ada_native_media"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/ada_native_media_height"
+                        android:layout_weight="1.0"
+                        android:layout_marginRight="@dimen/ads_margin_preference_value"
+                        android:layout_marginEnd="@dimen/ads_margin_preference_value" />
+
+                    <com.pranavpandey.android.dynamic.support.widget.DynamicButton
+                        style="@style/Widget.DynamicApp.Button"
+                        android:id="@+id/ada_native_cta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        app:adt_colorType="error" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.gms.ads.nativead.NativeAdView>
+
+    </com.pranavpandey.android.dynamic.support.widget.DynamicCardView>
+
+</FrameLayout>
