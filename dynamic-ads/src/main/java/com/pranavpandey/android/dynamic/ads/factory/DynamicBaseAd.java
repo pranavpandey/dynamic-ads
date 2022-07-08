@@ -28,7 +28,8 @@ import com.pranavpandey.android.dynamic.ads.DynamicAd;
  */
 public abstract class DynamicBaseAd implements DynamicAd {
 
-    @Override public @NonNull AdRequest getAdRequest() {
+    @Override
+    public @NonNull AdRequest getAdRequest() {
         return new AdRequest.Builder().build();
     }
 
