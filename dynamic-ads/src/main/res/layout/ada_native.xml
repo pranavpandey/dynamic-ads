@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	Copyright 2021-2022 Pranav Pandey
+	Copyright 2022 Pranav Pandey
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -23,18 +23,18 @@
     android:layout_height="wrap_content">
 
     <com.pranavpandey.android.dynamic.support.widget.DynamicCardView
-        style="@style/Widget.DynamicApp.Card">
+        style="?attr/ads_widgetCard">
 
         <com.google.android.gms.ads.nativead.NativeAdView
-            style="@style/Widget.DynamicApp.Content.Card"
+            style="?attr/ads_widgetContentCard"
             android:id="@+id/ada_native_ad">
 
             <LinearLayout
-                style="@style/Widget.DynamicApp.Content.Row.Vertical"
+                style="?attr/ads_widgetContentRowVertical"
                 android:id="@+id/ada_native_layout">
 
                 <com.pranavpandey.android.dynamic.support.widget.DynamicTextView
-                    style="@style/TextAppearance.DynamicApp.Caption"
+                    style="?attr/ads_textAppearanceCaption"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -42,37 +42,37 @@
                     app:adt_contrastWithColorType="surface" />
 
                 <LinearLayout
-                    style="@style/Widget.DynamicApp.Content.Row.Horizontal"
+                    style="?attr/ads_widgetContentRowHorizontal"
                     android:layout_marginTop="@dimen/ads_margin_tiny">
 
                     <com.pranavpandey.android.dynamic.support.widget.DynamicImageView
-                        style="@style/Widget.DynamicApp.Image.Info.Big"
+                        style="?attr/ads_widgetImageInfoBig"
                         android:id="@+id/ada_native_icon"
                         app:adt_colorType="none" />
 
                     <LinearLayout
-                        style="@style/Widget.DynamicApp.Content.Row.Vertical.Center">
+                        style="?attr/ads_widgetContentRowVerticalCenter">
 
                         <com.pranavpandey.android.dynamic.support.widget.DynamicTextView
-                            style="@style/TextAppearance.DynamicApp.Headline5.Card.Info"
+                            style="?attr/ads_textAppearanceHeadline5"
                             android:id="@+id/ada_native_primary"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:adt_contrastWithColorType="surface" />
 
                         <com.pranavpandey.android.dynamic.support.widget.DynamicTextView
-                            style="@style/TextAppearance.DynamicApp.Subtitle1"
+                            style="?attr/ads_textAppearanceSubtitle1"
                             android:id="@+id/ada_native_secondary"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:adt_contrastWithColorType="surface" />
 
                         <LinearLayout
-                            style="@style/Widget.DynamicApp.Content.Row.Vertical"
+                            style="?attr/ads_widgetContentRowVertical"
                             android:layout_marginTop="@dimen/ads_margin_tiny">
 
                             <com.pranavpandey.android.dynamic.support.widget.DynamicTextView
-                                style="@style/TextAppearance.DynamicApp.Body1"
+                                style="?attr/ads_textAppearanceBody1"
                                 android:id="@+id/ada_native_body"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    style="@style/Widget.DynamicApp.Content.Row.Horizontal"
+                    style="?attr/ads_widgetContentRowHorizontal"
                     android:layout_marginTop="@dimen/ads_margin_regular">
 
                     <com.google.android.gms.ads.nativead.MediaView
@@ -105,7 +105,7 @@
                         android:layout_marginEnd="@dimen/ads_margin_preference_value" />
 
                     <com.pranavpandey.android.dynamic.support.widget.DynamicButton
-                        style="@style/Widget.DynamicApp.Button"
+                        style="?attr/ads_widgetButton"
                         android:id="@+id/ada_native_cta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

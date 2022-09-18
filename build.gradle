@@ -20,9 +20,9 @@ buildscript {
             'minSdk'    : 16,
             'targetSdk' : 33,
             'buildTools': '33.0.0',
-            'dynamic'   : '4.4.5',
+            'dynamic'   : '4.4.6',
 			'gmsAds'    : '20.6.0',
-			'support'   : '6.0.3',
+			'support'   : '6.1.0',
 			'ump'       : '2.0.0'
     ]
 
