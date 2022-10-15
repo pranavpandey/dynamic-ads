@@ -160,7 +160,7 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
             return;
         }
 
-        if (mRewardedInterstitialAd != null) {
+        if (isAdLoaded()) {
             return;
         }
 
@@ -194,11 +194,16 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
     public void populateAd() {
         super.populateAd();
 
-        if (mRewardedInterstitialAd == null) {
+        if (!isAdLoaded()) {
             return;
         }
 
         getAdListener().onAdDisplay(mRewardedInterstitialAd);
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mRewardedInterstitialAd != null;
     }
 
     @Override

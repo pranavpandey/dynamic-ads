@@ -157,7 +157,7 @@ public class DynamicNativeAd extends DynamicBaseAd {
         }
 
         try {
-            if (mNativeAd != null) {
+            if (isAdLoaded()) {
                 onCustomiseAd();
                 
                 return;
@@ -180,7 +180,7 @@ public class DynamicNativeAd extends DynamicBaseAd {
     public void onCustomiseAd() {
         super.onCustomiseAd();
 
-        if (mNativeAd == null || getAdLayoutRes() == LAYOUT_RES_NONE) {
+        if (!isAdLoaded() || getAdLayoutRes() == LAYOUT_RES_NONE) {
             return;
         }
 
@@ -254,13 +254,18 @@ public class DynamicNativeAd extends DynamicBaseAd {
     public void populateAd() {
         super.populateAd();
 
-        if (mNativeAd == null || mAdView == null) {
+        if (!isAdLoaded() || mAdView == null) {
             return;
         }
 
 
         mAdView.setNativeAd(mNativeAd);
         getAdListener().onAdDisplay(mNativeAd, mParentView, mAdView);
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mNativeAd != null;
     }
 
     @Override

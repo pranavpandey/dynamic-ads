@@ -159,7 +159,7 @@ public class DynamicRewardedAd extends DynamicBaseAd {
             return;
         }
 
-        if (mRewardedAd != null) {
+        if (isAdLoaded()) {
             return;
         }
 
@@ -192,11 +192,16 @@ public class DynamicRewardedAd extends DynamicBaseAd {
     public void populateAd() {
         super.populateAd();
 
-        if (mRewardedAd == null) {
+        if (!isAdLoaded()) {
             return;
         }
 
         getAdListener().onAdDisplay(mRewardedAd);
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mRewardedAd != null;
     }
 
     @Override

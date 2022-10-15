@@ -139,6 +139,8 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
     @Override
     public void onAdCreate() {
         if (!getAdListener().isAdEnabled()) {
+            onAdDestroy();
+
             return;
         }
 
@@ -146,9 +148,7 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
             return;
         }
 
-        if (mAppOpenAd != null) {
-            populateAd();
-
+        if (isAdLoaded()) {
             return;
         }
 
@@ -177,11 +177,16 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
     public void populateAd() {
         super.populateAd();
 
-        if (mAppOpenAd == null) {
+        if (!isAdLoaded()) {
             return;
         }
 
         getAdListener().onAdDisplay(mAppOpenAd);
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mAppOpenAd != null;
     }
 
     @Override

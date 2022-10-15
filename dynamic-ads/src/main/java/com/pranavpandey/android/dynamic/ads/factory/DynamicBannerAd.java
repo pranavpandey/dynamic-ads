@@ -97,6 +97,33 @@ public class DynamicBannerAd extends DynamicBaseAd {
         return DynamicAds.getInstance().getConsentForm();
     }
 
+    /**
+     * Returns the ad size to be used.
+     *
+     * @return The ad size to be used.
+     *
+     * @see #onSetAdSize()
+     */
+    protected @Nullable AdSize getAdSize() {
+        return DynamicAdUtils.getAdSize(getAdListener().getAdContext());
+    }
+
+    /**
+     * This method will be called to set the ad size.
+     *
+     * @see #getAdSize()
+     */
+    protected void onSetAdSize() {
+        if (!isAdLoaded()) {
+            return;
+        }
+
+        AdSize adSize;
+        if ((adSize = getAdSize()) != null) {
+            mAdView.setAdSize(adSize);
+        }
+    }
+
     @Override
     public void onAdCreate() {
         if (!getAdListener().isAdEnabled()) {
@@ -110,23 +137,27 @@ public class DynamicBannerAd extends DynamicBaseAd {
         }
 
         try {
+            if (isAdLoaded()) {
+                onSetAdSize();
+                populateAd();
+
+                return;
+            }
+
             mAdView = new AdView(getAdListener().getAdContext());
             mAdView.setAdUnitId(getAdUnitId());
 
-            AdSize adSize = DynamicAdUtils.getAdSize(getAdListener().getAdContext());
-            if (adSize != null) {
-                mAdView.setAdSize(adSize);
-            }
+            onSetAdSize();
 
             mAdView.setAdListener(new AdListener() {
                 @Override
                 public void onAdLoaded() {
-                    getAdListener().onAdDisplay(mAdView);
+                    populateAd();
                 }
 
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-                    mAdView.destroy();
+                    onAdDestroy();
                 }
             });
 
@@ -136,8 +167,24 @@ public class DynamicBannerAd extends DynamicBaseAd {
     }
 
     @Override
+    public void populateAd() {
+        super.populateAd();
+
+        if (!isAdLoaded()) {
+            return;
+        }
+
+        getAdListener().onAdDisplay(mAdView);
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mAdView != null;
+    }
+
+    @Override
     public void onAdResume() {
-        if (mAdView == null) {
+        if (!isAdLoaded()) {
             return;
         }
 
@@ -150,7 +197,7 @@ public class DynamicBannerAd extends DynamicBaseAd {
 
     @Override
     public void onAdPause() {
-        if (mAdView == null) {
+        if (!isAdLoaded()) {
             return;
         }
 
@@ -159,7 +206,7 @@ public class DynamicBannerAd extends DynamicBaseAd {
 
     @Override
     public void onAdDestroy() {
-        if (mAdView == null) {
+        if (!isAdLoaded()) {
             return;
         }
 

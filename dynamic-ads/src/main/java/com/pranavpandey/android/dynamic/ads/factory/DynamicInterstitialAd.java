@@ -175,7 +175,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
             return;
         }
 
-        if (mInterstitialAd != null) {
+        if (isAdLoaded()) {
             populateAd();
 
             return;
@@ -216,13 +216,18 @@ public class DynamicInterstitialAd extends DynamicBaseAd
     public void populateAd() {
         super.populateAd();
 
-        if (mInterstitialAd == null) {
+        if (!isAdLoaded()) {
             return;
         }
 
         if (getAdListener().getAdEventCount() >= mEventCount) {
             getAdListener().onAdDisplay(mInterstitialAd);
         }
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mInterstitialAd != null;
     }
 
     @Override

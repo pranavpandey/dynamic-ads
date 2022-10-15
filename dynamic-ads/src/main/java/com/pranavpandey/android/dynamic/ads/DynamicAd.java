@@ -178,6 +178,13 @@ public interface DynamicAd {
     void populateAd();
 
     /**
+     * Checks whether the ad has been loaded.
+     *
+     * @return {@code true} if the ad has been loaded.
+     */
+    boolean isAdLoaded();
+
+    /**
      * Try to resume the paused ad.
      */
     void onAdResume();
