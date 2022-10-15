@@ -16,6 +16,7 @@
 
 package com.pranavpandey.android.dynamic.ads.factory;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -32,12 +33,11 @@ import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
 import com.pranavpandey.android.dynamic.ads.DynamicAds;
 import com.pranavpandey.android.dynamic.ads.DynamicBaseAd;
-import com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener;
 import com.pranavpandey.android.dynamic.ads.listener.factory.InterstitialAdListener;
 import com.pranavpandey.android.dynamic.preferences.DynamicPreferences;
 
 /**
- * Helper class to show an interstitial ad dynamically throughout the app.
+ * A {@link DynamicBaseAd} to show an interstitial ad dynamically throughout the app.
  */
 public class DynamicInterstitialAd extends DynamicBaseAd
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -122,6 +122,44 @@ public class DynamicInterstitialAd extends DynamicBaseAd
         return DynamicAds.getInstance().getConsentForm();
     }
 
+    /**
+     * Returns the optional full screen content callback.
+     *
+     * @return The optional full screen content callback.
+     */
+    protected @Nullable FullScreenContentCallback getFullScreenContentCallback() {
+        return new FullScreenContentCallback() {
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+            }
+
+            @Override
+            public void onAdDismissedFullScreenContent() {
+                super.onAdDismissedFullScreenContent();
+            }
+
+            @Override
+            public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+                super.onAdFailedToShowFullScreenContent(adError);
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+            }
+
+            @Override
+            public void onAdShowedFullScreenContent() {
+                super.onAdShowedFullScreenContent();
+
+                onAdDestroy();
+                getAdListener().resetAdEventCount();
+                onAdCreate();
+            }
+        };
+    }
+
     @Override
     public void onAdCreate() {
         if (!getAdListener().isAdEnabled()) {
@@ -154,36 +192,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
 
                     mInterstitialAd = interstitialAd;
 
-                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                        @Override
-                        public void onAdClicked() {
-                            super.onAdClicked();
-                        }
-
-                        @Override
-                        public void onAdDismissedFullScreenContent() {
-                            super.onAdDismissedFullScreenContent();
-                        }
-
-                        @Override
-                        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                            super.onAdFailedToShowFullScreenContent(adError);
-                        }
-
-                        @Override
-                        public void onAdImpression() {
-                            super.onAdImpression();
-                        }
-
-                        @Override
-                        public void onAdShowedFullScreenContent() {
-                            super.onAdShowedFullScreenContent();
-
-                            onAdDestroy();
-                            getAdListener().resetAdEventCount();
-                            onAdCreate();
-                        }
-                    });
+                    mInterstitialAd.setFullScreenContentCallback(getFullScreenContentCallback());
 
                     populateAd();
                 }
@@ -193,10 +202,12 @@ public class DynamicInterstitialAd extends DynamicBaseAd
     }
 
     /**
-     * Try to show the loaded interstitial ad after comparing the ad event count.
+     * Try to call the ad display event for the loaded interstitial ad after comparing
+     * the ad event count.
      *
-     * @see DynamicAdListener#getAdEventCount()
-     * @see DynamicAdListener#onAdDisplay(InterstitialAd)
+     * @see InterstitialAdListener#getAdEventCount()
+     * @see InterstitialAdListener#onAdDisplay(InterstitialAd)
+     * @see InterstitialAd#show(Activity)
      */
     @Override
     public void populateAd() {
