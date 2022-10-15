@@ -139,8 +139,6 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
     @Override
     public void onAdCreate() {
         if (!getAdListener().isAdEnabled()) {
-            onAdDestroy();
-
             return;
         }
 
@@ -169,8 +167,6 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
                     mAppOpenAd = appOpenAd;
 
                     mAppOpenAd.setFullScreenContentCallback(getFullScreenContentCallback());
-
-                    populateAd();
                 }
             });
         } catch (Exception ignored) {

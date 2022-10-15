@@ -161,8 +161,6 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
         }
 
         if (mRewardedInterstitialAd != null) {
-            populateAd();
-
             return;
         }
 
@@ -186,8 +184,6 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
                     }
                     mRewardedInterstitialAd.setFullScreenContentCallback(
                             getFullScreenContentCallback());
-
-                    populateAd();
                 }
             });
         } catch (Exception ignored) {

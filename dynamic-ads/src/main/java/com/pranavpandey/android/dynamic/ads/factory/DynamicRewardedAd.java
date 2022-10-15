@@ -160,8 +160,6 @@ public class DynamicRewardedAd extends DynamicBaseAd {
         }
 
         if (mRewardedAd != null) {
-            populateAd();
-
             return;
         }
 
@@ -184,8 +182,6 @@ public class DynamicRewardedAd extends DynamicBaseAd {
                                 getServerSideVerificationOptions());
                     }
                     mRewardedAd.setFullScreenContentCallback(getFullScreenContentCallback());
-
-                    populateAd();
                 }
             });
         } catch (Exception ignored) {
