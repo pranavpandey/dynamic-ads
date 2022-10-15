@@ -105,7 +105,8 @@ public class DynamicBannerAd extends DynamicBaseAd {
      * @see #onSetAdSize()
      */
     protected @Nullable AdSize getAdSize() {
-        return DynamicAdUtils.getAdSize(getAdListener().getAdContext());
+        return DynamicAdUtils.getAdSize(getAdListener().getAdContext(),
+                getAdListener().getAdContainer());
     }
 
     /**

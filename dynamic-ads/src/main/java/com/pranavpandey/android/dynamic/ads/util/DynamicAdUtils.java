@@ -16,8 +16,10 @@
 
 package com.pranavpandey.android.dynamic.ads.util;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.gms.ads.AdSize;
@@ -37,20 +40,53 @@ import com.pranavpandey.android.dynamic.util.DynamicWindowUtils;
 public class DynamicAdUtils {
 
     /**
+     * Factor to calculate the acceptable ad size.
+     */
+    public static final float AD_SIZE_FACTOR = 3f;
+
+    /**
+     * Returns the ad size for the supplied activity and container.
+     *
+     * @param activity The activity to calculate the ad size.
+     * @param container The ad container to be used.
+     *
+     * @return The ad size for the supplied activity and container.
+     *
+     * @see AdSize#FLUID
+     */
+    @SuppressLint("VisibleForTests")
+    public static @NonNull AdSize getAdSize(@Nullable Context activity,
+            @Nullable View container) {
+        if (!(activity instanceof Activity)) {
+            return AdSize.FLUID;
+        }
+
+        float density = DynamicWindowUtils.getDisplayDensity(activity);
+        Point screenSize = DynamicWindowUtils.getAppUsableScreenSize(activity);
+
+        float adWidth = 0f;
+        if (container != null && (adWidth = container.getWidth()) <= 0f) {
+            adWidth = screenSize.x;
+        }
+
+        AdSize adSize = AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
+                activity, (int) (adWidth / density));
+
+        return adSize != AdSize.INVALID && adSize.getHeightInPixels(activity)
+                < (screenSize.y / (density * AD_SIZE_FACTOR)) ? adSize : AdSize.FLUID;
+    }
+
+    /**
      * Returns the ad size for the supplied activity.
      *
      * @param activity The activity to calculate the ad size.
      *
      * @return The ad size for the supplied activity.
+     *
+     * @see #getAdSize(Context, View)
      */
-    public static @Nullable AdSize getAdSize(@Nullable Context activity) {
-        if (!(activity instanceof Activity)) {
-            return null;
-        }
-
-        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity,
-                (int) (DynamicWindowUtils.getAppUsableScreenSize(activity).x
-                        / DynamicWindowUtils.getDisplayDensity(activity)));
+    public static @NonNull AdSize getAdSize(@Nullable Context activity) {
+        return getAdSize(activity, null);
     }
 
     /**
