@@ -14,15 +14,22 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.ads.listener;
+package com.pranavpandey.android.dynamic.ads.listener.factory;
 
-import com.pranavpandey.android.dynamic.ads.listener.factory.BannerAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.InterstitialAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.NativeAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.RewardedAdListener;
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.pranavpandey.android.dynamic.ads.listener.BaseAdListener;
 
 /**
- * An interface to listen the dynamic ad events.
+ * A {@link BaseAdListener} to listen the rewarded ad events.
  */
-public interface DynamicAdListener extends BannerAdListener,
-        InterstitialAdListener, NativeAdListener, RewardedAdListener { }
+public interface RewardedAdListener extends BaseAdListener {
+
+    /**
+     * This method will be called when the rewarded ad is ready to be shown.
+     *
+     * @param rewardedAd The loaded rewarded ad.
+     */
+    void onAdDisplay(@NonNull RewardedAd rewardedAd);
+}
