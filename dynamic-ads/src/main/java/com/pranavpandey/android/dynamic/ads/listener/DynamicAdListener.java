@@ -20,9 +20,10 @@ import com.pranavpandey.android.dynamic.ads.listener.factory.BannerAdListener;
 import com.pranavpandey.android.dynamic.ads.listener.factory.InterstitialAdListener;
 import com.pranavpandey.android.dynamic.ads.listener.factory.NativeAdListener;
 import com.pranavpandey.android.dynamic.ads.listener.factory.RewardedAdListener;
+import com.pranavpandey.android.dynamic.ads.listener.factory.RewardedInterstitialAdListener;
 
 /**
  * An interface to listen the dynamic ad events.
  */
-public interface DynamicAdListener extends BannerAdListener,
-        InterstitialAdListener, NativeAdListener, RewardedAdListener { }
+public interface DynamicAdListener extends BannerAdListener, InterstitialAdListener,
+        NativeAdListener, RewardedAdListener, RewardedInterstitialAdListener { }
