@@ -37,7 +37,7 @@ import com.pranavpandey.android.dynamic.ads.listener.factory.InterstitialAdListe
 import com.pranavpandey.android.dynamic.preferences.DynamicPreferences;
 
 /**
- * A {@link DynamicBaseAd} to show an interstitial ad dynamically throughout the app.
+ * A {@link DynamicBaseAd} to show an {@link InterstitialAd} dynamically throughout the app.
  */
 public class DynamicInterstitialAd extends DynamicBaseAd
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -50,7 +50,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
     /**
      * Interstitial ad listener to listen ad events.
      */
-    private final InterstitialAdListener mDynamicAdListener;
+    private final InterstitialAdListener mInterstitialAdListener;
 
     /**
      * Minimum event count to show this ad.
@@ -58,7 +58,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
     private final long mEventCount;
 
     /**
-     * Interstitial ad loaded by this ad.
+     * Interstitial ad loaded by this dynamic ad.
      */
     private InterstitialAd mInterstitialAd;
 
@@ -83,7 +83,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
     public DynamicInterstitialAd(@NonNull String adUnitId,
             @NonNull InterstitialAdListener dynamicAdListener, long eventCount) {
         this.mAdUnitId = adUnitId;
-        this.mDynamicAdListener = dynamicAdListener;
+        this.mInterstitialAdListener = dynamicAdListener;
         this.mEventCount = eventCount;
 
         if (getAdListener().isAdEnabled()) {
@@ -103,7 +103,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
     
     @Override
     public @NonNull InterstitialAdListener getAdListener() {
-        return mDynamicAdListener;
+        return mInterstitialAdListener;
     }
 
     @Override
@@ -137,11 +137,16 @@ public class DynamicInterstitialAd extends DynamicBaseAd
             @Override
             public void onAdDismissedFullScreenContent() {
                 super.onAdDismissedFullScreenContent();
+
+                onAdDestroy();
+                onAdCreate();
             }
 
             @Override
             public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                 super.onAdFailedToShowFullScreenContent(adError);
+
+                onAdDestroy();
             }
 
             @Override
@@ -153,9 +158,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
             public void onAdShowedFullScreenContent() {
                 super.onAdShowedFullScreenContent();
 
-                onAdDestroy();
                 getAdListener().resetAdEventCount();
-                onAdCreate();
             }
         };
     }
@@ -179,8 +182,8 @@ public class DynamicInterstitialAd extends DynamicBaseAd
         }
 
         try {
-            InterstitialAd.load(getAdListener().getAdContext(),
-                    getAdUnitId(), getAdRequest(), new InterstitialAdLoadCallback() {
+            InterstitialAd.load(getAdListener().getAdContext(), getAdUnitId(),
+                    getAdRequest(), new InterstitialAdLoadCallback() {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                     super.onAdFailedToLoad(loadAdError);

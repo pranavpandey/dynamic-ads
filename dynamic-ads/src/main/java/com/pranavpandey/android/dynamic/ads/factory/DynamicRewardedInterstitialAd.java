@@ -33,7 +33,8 @@ import com.pranavpandey.android.dynamic.ads.DynamicBaseAd;
 import com.pranavpandey.android.dynamic.ads.listener.factory.RewardedInterstitialAdListener;
 
 /**
- * Helper class to show a {@link RewardedInterstitialAd} dynamically throughout the app.
+ * A {@link DynamicBaseAd} to show a {@link RewardedInterstitialAd} dynamically throughout
+ * the app.
  */
 public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
 
@@ -123,11 +124,16 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
             @Override
             public void onAdDismissedFullScreenContent() {
                 super.onAdDismissedFullScreenContent();
+
+                onAdDestroy();
+                onAdCreate();
             }
 
             @Override
             public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                 super.onAdFailedToShowFullScreenContent(adError);
+
+                onAdDestroy();
             }
 
             @Override
@@ -138,9 +144,6 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
             @Override
             public void onAdShowedFullScreenContent() {
                 super.onAdShowedFullScreenContent();
-
-                onAdDestroy();
-                onAdCreate();
             }
         };
     }
@@ -164,8 +167,8 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
         }
 
         try {
-            RewardedInterstitialAd.load(getAdListener().getAdContext(),
-                    getAdUnitId(), getAdRequest(), new RewardedInterstitialAdLoadCallback() {
+            RewardedInterstitialAd.load(getAdListener().getAdContext(), getAdUnitId(),
+                    getAdRequest(), new RewardedInterstitialAdLoadCallback() {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                     super.onAdFailedToLoad(loadAdError);

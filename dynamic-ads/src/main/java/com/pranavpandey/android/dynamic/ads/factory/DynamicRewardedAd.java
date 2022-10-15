@@ -33,7 +33,7 @@ import com.pranavpandey.android.dynamic.ads.DynamicBaseAd;
 import com.pranavpandey.android.dynamic.ads.listener.factory.RewardedAdListener;
 
 /**
- * Helper class to show a reward ad dynamically throughout the app.
+ * A {@link DynamicBaseAd} to show a {@link RewardedAd} dynamically throughout the app.
  */
 public class DynamicRewardedAd extends DynamicBaseAd {
 
@@ -45,10 +45,10 @@ public class DynamicRewardedAd extends DynamicBaseAd {
     /**
      * Rewarded ad listener to listen ad events.
      */
-    private final RewardedAdListener mDynamicAdListener;
+    private final RewardedAdListener mRewardedAdListener;
 
     /**
-     * Rewarded ad loaded by this ad.
+     * Rewarded ad loaded by this dynamic ad.
      */
     private RewardedAd mRewardedAd;
 
@@ -61,7 +61,7 @@ public class DynamicRewardedAd extends DynamicBaseAd {
     public DynamicRewardedAd(@NonNull String adUnitId,
             @NonNull RewardedAdListener dynamicAdListener) {
         this.mAdUnitId = adUnitId;
-        this.mDynamicAdListener = dynamicAdListener;
+        this.mRewardedAdListener = dynamicAdListener;
 
         if (getAdListener().isAdEnabled()) {
             onInitialize();
@@ -80,7 +80,7 @@ public class DynamicRewardedAd extends DynamicBaseAd {
     
     @Override
     public @NonNull RewardedAdListener getAdListener() {
-        return mDynamicAdListener;
+        return mRewardedAdListener;
     }
 
     @Override
@@ -123,11 +123,16 @@ public class DynamicRewardedAd extends DynamicBaseAd {
             @Override
             public void onAdDismissedFullScreenContent() {
                 super.onAdDismissedFullScreenContent();
+
+                onAdDestroy();
+                onAdCreate();
             }
 
             @Override
             public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                 super.onAdFailedToShowFullScreenContent(adError);
+
+                onAdDestroy();
             }
 
             @Override
@@ -138,9 +143,6 @@ public class DynamicRewardedAd extends DynamicBaseAd {
             @Override
             public void onAdShowedFullScreenContent() {
                 super.onAdShowedFullScreenContent();
-
-                onAdDestroy();
-                onAdCreate();
             }
         };
     }
@@ -164,8 +166,8 @@ public class DynamicRewardedAd extends DynamicBaseAd {
         }
 
         try {
-            RewardedAd.load(getAdListener().getAdContext(),
-                    getAdUnitId(), getAdRequest(), new RewardedAdLoadCallback() {
+            RewardedAd.load(getAdListener().getAdContext(), getAdUnitId(),
+                    getAdRequest(), new RewardedAdLoadCallback() {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                     super.onAdFailedToLoad(loadAdError);
@@ -177,8 +179,10 @@ public class DynamicRewardedAd extends DynamicBaseAd {
 
                     mRewardedAd = rewardedAd;
 
-                    mRewardedAd.setServerSideVerificationOptions(
-                            getServerSideVerificationOptions());
+                    if (getServerSideVerificationOptions() != null) {
+                        mRewardedAd.setServerSideVerificationOptions(
+                                getServerSideVerificationOptions());
+                    }
                     mRewardedAd.setFullScreenContentCallback(getFullScreenContentCallback());
 
                     populateAd();

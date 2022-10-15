@@ -41,7 +41,7 @@ import com.pranavpandey.android.dynamic.ads.listener.factory.NativeAdListener;
 import com.pranavpandey.android.dynamic.ads.util.DynamicAdUtils;
 
 /**
- * A {@link DynamicBaseAd} to show a native ad dynamically throughout the app.
+ * A {@link DynamicBaseAd} to show a {@link NativeAd} dynamically throughout the app.
  */
 public class DynamicNativeAd extends DynamicBaseAd {
 
@@ -58,7 +58,7 @@ public class DynamicNativeAd extends DynamicBaseAd {
     /**
      * Native ad listener to listen ad events.
      */
-    private final NativeAdListener mDynamicAdListener;
+    private final NativeAdListener mNativeAdListener;
 
     /**
      * Parent view used by the native ad.
@@ -71,7 +71,7 @@ public class DynamicNativeAd extends DynamicBaseAd {
     private NativeAdView mAdView;
 
     /**
-     * Native ad loaded by this ad.
+     * Native ad loaded by this dynamic ad.
      */
     private NativeAd mNativeAd;
 
@@ -97,7 +97,7 @@ public class DynamicNativeAd extends DynamicBaseAd {
             @NonNull NativeAdListener dynamicAdListener) {
         this.mAdUnitId = adUnitId;
         this.mAdLayoutRes = adLayoutRes;
-        this.mDynamicAdListener = dynamicAdListener;
+        this.mNativeAdListener = dynamicAdListener;
 
         if (getAdListener().isAdEnabled()) {
             onInitialize();
@@ -125,7 +125,7 @@ public class DynamicNativeAd extends DynamicBaseAd {
 
     @Override
     public @NonNull NativeAdListener getAdListener() {
-        return mDynamicAdListener;
+        return mNativeAdListener;
     }
 
     @Override
@@ -190,16 +190,16 @@ public class DynamicNativeAd extends DynamicBaseAd {
             return;
         }
 
-        TextView primaryView = (TextView) mParentView.findViewById(R.id.ada_native_primary);
-        TextView secondaryView = (TextView) mParentView.findViewById(R.id.ada_native_secondary);
-        TextView bodyView = (TextView) mParentView.findViewById(R.id.ada_native_body);
+        TextView primaryView = mParentView.findViewById(R.id.ada_native_primary);
+        TextView secondaryView = mParentView.findViewById(R.id.ada_native_secondary);
+        TextView bodyView = mParentView.findViewById(R.id.ada_native_body);
 
-        RatingBar ratingBar = (RatingBar) mParentView.findViewById(R.id.ada_native_rating_bar);
+        RatingBar ratingBar = mParentView.findViewById(R.id.ada_native_rating_bar);
         DynamicAdUtils.setEnabled(ratingBar, false);
 
-        Button callToActionView = (Button) mParentView.findViewById(R.id.ada_native_cta);
-        ImageView iconView = (ImageView) mParentView.findViewById(R.id.ada_native_icon);
-        MediaView mediaView = (MediaView) mParentView.findViewById(R.id.ada_native_media);
+        Button callToActionView = mParentView.findViewById(R.id.ada_native_cta);
+        ImageView iconView = mParentView.findViewById(R.id.ada_native_icon);
+        MediaView mediaView = mParentView.findViewById(R.id.ada_native_media);
 
         String store = mNativeAd.getStore();
         String advertiser = mNativeAd.getAdvertiser();
