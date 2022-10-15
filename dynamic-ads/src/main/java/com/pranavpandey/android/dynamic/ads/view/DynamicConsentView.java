@@ -24,7 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.pranavpandey.android.dynamic.ads.DynamicAds;
-import com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener;
+import com.pranavpandey.android.dynamic.ads.listener.BaseAdListener;
 import com.pranavpandey.android.dynamic.support.view.base.DynamicItemView;
 
 /**
@@ -49,16 +49,16 @@ public class DynamicConsentView extends DynamicItemView {
     protected void onInflate() {
         super.onInflate();
 
-        if (getContext() instanceof DynamicAdListener) {
+        if (getContext() instanceof BaseAdListener) {
             setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     DynamicAds.getInstance().loadConsentInformation(
-                            (DynamicAdListener) getContext(), true);
+                            (BaseAdListener) getContext(), true);
                 }
             });
 
-            setVisibility(((DynamicAdListener) getContext()).isAdEnabled()
+            setVisibility(((BaseAdListener) getContext()).isAdEnabled()
                     && DynamicAds.getInstance().isConsentFormAvailable() ? VISIBLE : GONE);
         } else {
             setOnClickListener(null);
