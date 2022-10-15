@@ -35,8 +35,9 @@ import com.google.android.gms.ads.nativead.NativeAdView;
 import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
 import com.pranavpandey.android.dynamic.ads.DynamicAds;
+import com.pranavpandey.android.dynamic.ads.DynamicBaseAd;
 import com.pranavpandey.android.dynamic.ads.R;
-import com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener;
+import com.pranavpandey.android.dynamic.ads.listener.factory.NativeAdListener;
 import com.pranavpandey.android.dynamic.ads.util.DynamicAdUtils;
 
 /**
@@ -55,9 +56,9 @@ public class DynamicNativeAd extends DynamicBaseAd {
     private final @LayoutRes int mAdLayoutRes;
 
     /**
-     * Dynamic ad listener to listen ad events.
+     * Native ad listener to listen ad events.
      */
-    private final DynamicAdListener mDynamicAdListener;
+    private final NativeAdListener mDynamicAdListener;
 
     /**
      * Parent view used by the native ad.
@@ -78,10 +79,10 @@ public class DynamicNativeAd extends DynamicBaseAd {
      * Constructor to initialize an object of this class.
      *
      * @param adUnitId The ad unit id to be used.
-     * @param dynamicAdListener The dynamic ad listener to be used.
+     * @param dynamicAdListener The native ad listener to be used.
      */
     public DynamicNativeAd(@NonNull String adUnitId,
-            @NonNull DynamicAdListener dynamicAdListener) {
+            @NonNull NativeAdListener dynamicAdListener) {
         this(adUnitId, LAYOUT_RES_NONE, dynamicAdListener);
     }
 
@@ -90,10 +91,10 @@ public class DynamicNativeAd extends DynamicBaseAd {
      *
      * @param adUnitId The ad unit id to be used.
      * @param adLayoutRes The optional ad layout resource to be used.
-     * @param dynamicAdListener The dynamic ad listener to be used.
+     * @param dynamicAdListener The native ad listener to be used.
      */
     public DynamicNativeAd(@NonNull String adUnitId, @LayoutRes int adLayoutRes,
-            @NonNull DynamicAdListener dynamicAdListener) {
+            @NonNull NativeAdListener dynamicAdListener) {
         this.mAdUnitId = adUnitId;
         this.mAdLayoutRes = adLayoutRes;
         this.mDynamicAdListener = dynamicAdListener;
@@ -123,7 +124,7 @@ public class DynamicNativeAd extends DynamicBaseAd {
     }
 
     @Override
-    public @NonNull DynamicAdListener getAdListener() {
+    public @NonNull NativeAdListener getAdListener() {
         return mDynamicAdListener;
     }
 

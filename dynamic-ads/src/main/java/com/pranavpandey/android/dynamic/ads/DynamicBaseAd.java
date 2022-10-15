@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.ads.factory;
+package com.pranavpandey.android.dynamic.ads;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
-import com.pranavpandey.android.dynamic.ads.DynamicAd;
 
 /**
- * An abstract class to implement a dynamic ad.
+ * An abstract class to implement a {@link DynamicAd}.
  */
 public abstract class DynamicBaseAd implements DynamicAd {
 

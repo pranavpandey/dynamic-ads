@@ -14,14 +14,21 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.ads.listener;
+package com.pranavpandey.android.dynamic.ads.listener.factory;
 
-import com.pranavpandey.android.dynamic.ads.listener.factory.BannerAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.InterstitialAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.NativeAdListener;
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 
 /**
- * An interface to listen the dynamic ad events.
+ * An {@link EventAdListener} to listen the interstitial ad events.
  */
-public interface DynamicAdListener extends BannerAdListener,
-        InterstitialAdListener, NativeAdListener { }
+public interface InterstitialAdListener extends EventAdListener {
+
+    /**
+     * This method will be called when the interstitial ad is ready to be shown.
+     *
+     * @param interstitialAd The loaded interstitial ad.
+     */
+    void onAdDisplay(@NonNull InterstitialAd interstitialAd);
+}

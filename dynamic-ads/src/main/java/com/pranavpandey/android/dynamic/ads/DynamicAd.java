@@ -24,7 +24,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
-import com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener;
+import com.pranavpandey.android.dynamic.ads.listener.BaseAdListener;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -127,7 +127,7 @@ public interface DynamicAd {
      *
      * @return The listener used by this ad.
      */
-    @NonNull DynamicAdListener getAdListener();
+    @NonNull BaseAdListener getAdListener();
 
     /**
      * This method will be called to do the initialization.

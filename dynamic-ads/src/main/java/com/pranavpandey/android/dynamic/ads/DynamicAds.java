@@ -35,7 +35,7 @@ import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.FormError;
 import com.google.android.ump.UserMessagingPlatform;
-import com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener;
+import com.pranavpandey.android.dynamic.ads.listener.BaseAdListener;
 import com.pranavpandey.android.dynamic.preferences.DynamicPreferences;
 
 import java.util.HashSet;
@@ -351,24 +351,24 @@ public class DynamicAds {
     /**
      * Try to request the consent information update.
      *
-     * @param dynamicAdListener The dynamic ad lister to be used.
+     * @param adListener The dynamic ad lister to be used.
      * @param force {@code true} to always show the consent form.
      */
-    public void loadConsentInformation(final @Nullable DynamicAdListener dynamicAdListener,
+    public void loadConsentInformation(final @Nullable BaseAdListener adListener,
             final boolean force) {
         this.mConsentInformation = UserMessagingPlatform.getConsentInformation(getContext());
 
-        if (getConsentInformation() == null || !(dynamicAdListener instanceof Activity)) {
+        if (getConsentInformation() == null || !(adListener instanceof Activity)) {
             return;
         }
 
         getConsentInformation().requestConsentInfoUpdate(
-                (Activity) dynamicAdListener, getConsentRequestParameters(),
+                (Activity) adListener, getConsentRequestParameters(),
                 new ConsentInformation.OnConsentInfoUpdateSuccessListener() {
                     @Override
                     public void onConsentInfoUpdateSuccess() {
                         if (isConsentFormAvailable()) {
-                            loadConsentForm(dynamicAdListener, force);
+                            loadConsentForm(adListener, force);
                         } else {
                             recreateAds();
                         }
@@ -382,12 +382,11 @@ public class DynamicAds {
     /**
      * Try to load the consent form.
      *
-     * @param dynamicAdListener The dynamic ad lister to be used.
+     * @param adListener The dynamic ad lister to be used.
      * @param force {@code true} to always show the consent form.
      */
-    public void loadConsentForm(final @Nullable DynamicAdListener dynamicAdListener,
-            final boolean force) {
-        if (dynamicAdListener == null) {
+    public void loadConsentForm(final @Nullable BaseAdListener adListener, final boolean force) {
+        if (adListener == null) {
             return;
         }
 
@@ -398,7 +397,7 @@ public class DynamicAds {
                 mConsentForm = consentForm;
 
                 if (isConsentRequired() || force) {
-                    showConsentForm(dynamicAdListener);
+                    showConsentForm(adListener);
                 } else {
                     recreateAds();
                 }
@@ -412,23 +411,23 @@ public class DynamicAds {
     /**
      * Try to show the consent form.
      *
-     * @param dynamicAdListener The dynamic ad lister to be used.
+     * @param adListener The dynamic ad lister to be used.
      */
-    public void showConsentForm(final @Nullable DynamicAdListener dynamicAdListener) {
-        if (getConsentForm() == null || !(dynamicAdListener instanceof Activity)) {
+    public void showConsentForm(final @Nullable BaseAdListener adListener) {
+        if (getConsentForm() == null || !(adListener instanceof Activity)) {
             return;
         }
 
         getHandler().post(new Runnable() {
             @Override
             public void run() {
-                getConsentForm().show((Activity) dynamicAdListener,
+                getConsentForm().show((Activity) adListener,
                         new ConsentForm.OnConsentFormDismissedListener() {
                     @Override
                     public void onConsentFormDismissed(@Nullable FormError formError) {
                         mConsentFormVisible = false;
 
-                        loadConsentForm(dynamicAdListener, false);
+                        loadConsentForm(adListener, false);
                     }
                 });
 
@@ -441,19 +440,18 @@ public class DynamicAds {
      * Try to initialize the mobile ads.
      *
      * @param dynamicAd The dynamic ad to be initialized.
-     * @param dynamicAdListener The dynamic ad lister to be used.
+     * @param adListener The dynamic ad lister to be used.
      */
-    public void initializeAd(@Nullable DynamicAd dynamicAd,
-            @Nullable DynamicAdListener dynamicAdListener) {
+    public void initializeAd(@Nullable DynamicAd dynamicAd, @Nullable BaseAdListener adListener) {
         if (!isConsentInformationAvailable()) {
             queueAd(dynamicAd);
-            loadConsentInformation(dynamicAdListener, false);
+            loadConsentInformation(adListener, false);
 
             return;
         }
 
         if (isConsentFormVisible()) {
-            showConsentForm(dynamicAdListener);
+            showConsentForm(adListener);
         }
 
         if (isConsentRequired()) {

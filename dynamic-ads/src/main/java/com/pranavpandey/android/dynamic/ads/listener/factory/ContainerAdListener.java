@@ -14,14 +14,23 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.ads.listener;
+package com.pranavpandey.android.dynamic.ads.listener.factory;
 
-import com.pranavpandey.android.dynamic.ads.listener.factory.BannerAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.InterstitialAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.NativeAdListener;
+import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+
+import com.pranavpandey.android.dynamic.ads.listener.BaseAdListener;
 
 /**
- * An interface to listen the dynamic ad events.
+ * A {@link BaseAdListener} to provide ad container.
  */
-public interface DynamicAdListener extends BannerAdListener,
-        InterstitialAdListener, NativeAdListener { }
+public interface ContainerAdListener extends BaseAdListener {
+
+    /**
+     * This method will be called to get the container view to show the ad.
+     *
+     * @return The container view to show the ad.
+     */
+    @Nullable ViewGroup getAdContainer();
+}

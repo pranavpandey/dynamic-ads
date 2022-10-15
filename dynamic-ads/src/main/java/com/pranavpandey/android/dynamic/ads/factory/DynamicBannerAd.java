@@ -27,7 +27,8 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
 import com.pranavpandey.android.dynamic.ads.DynamicAds;
-import com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener;
+import com.pranavpandey.android.dynamic.ads.DynamicBaseAd;
+import com.pranavpandey.android.dynamic.ads.listener.factory.BannerAdListener;
 import com.pranavpandey.android.dynamic.ads.util.DynamicAdUtils;
 
 /**
@@ -41,9 +42,9 @@ public class DynamicBannerAd extends DynamicBaseAd {
     private final String mAdUnitId;
 
     /**
-     * Dynamic ad listener to listen ad events.
+     * Banner ad listener to listen ad events.
      */
-    private final DynamicAdListener mDynamicAdListener;
+    private final BannerAdListener mBannerAdListener;
 
     /**
      * Ad view used by the banner ad.
@@ -54,12 +55,11 @@ public class DynamicBannerAd extends DynamicBaseAd {
      * Constructor to initialize an object of this class.
      *
      * @param adUnitId The ad unit id to be used.
-     * @param dynamicAdListener The dynamic ad listener to be used.
+     * @param dynamicAdListener The banner ad listener to be used.
      */
-    public DynamicBannerAd(@NonNull String adUnitId,
-            @NonNull DynamicAdListener dynamicAdListener) {
+    public DynamicBannerAd(@NonNull String adUnitId, @NonNull BannerAdListener dynamicAdListener) {
         this.mAdUnitId = adUnitId;
-        this.mDynamicAdListener = dynamicAdListener;
+        this.mBannerAdListener = dynamicAdListener;
 
         if (getAdListener().isAdEnabled()) {
             onInitialize();
@@ -77,8 +77,8 @@ public class DynamicBannerAd extends DynamicBaseAd {
     }
 
     @Override
-    public @NonNull DynamicAdListener getAdListener() {
-        return mDynamicAdListener;
+    public @NonNull BannerAdListener getAdListener() {
+        return mBannerAdListener;
     }
 
     @Override

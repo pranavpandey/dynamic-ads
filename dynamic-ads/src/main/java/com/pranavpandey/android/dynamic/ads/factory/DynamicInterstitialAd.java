@@ -31,7 +31,9 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
 import com.pranavpandey.android.dynamic.ads.DynamicAds;
+import com.pranavpandey.android.dynamic.ads.DynamicBaseAd;
 import com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener;
+import com.pranavpandey.android.dynamic.ads.listener.factory.InterstitialAdListener;
 import com.pranavpandey.android.dynamic.preferences.DynamicPreferences;
 
 /**
@@ -46,9 +48,9 @@ public class DynamicInterstitialAd extends DynamicBaseAd
     private final String mAdUnitId;
 
     /**
-     * Dynamic ad listener to listen ad events.
+     * Interstitial ad listener to listen ad events.
      */
-    private final DynamicAdListener mDynamicAdListener;
+    private final InterstitialAdListener mDynamicAdListener;
 
     /**
      * Minimum event count to show this ad.
@@ -64,10 +66,10 @@ public class DynamicInterstitialAd extends DynamicBaseAd
      * Constructor to initialize an object of this class.
      *
      * @param adUnitId The ad unit id to be used.
-     * @param dynamicAdListener The dynamic ad listener to be used.
+     * @param dynamicAdListener The interstitial ad listener to be used.
      */
     public DynamicInterstitialAd(@NonNull String adUnitId,
-            @NonNull DynamicAdListener dynamicAdListener) {
+            @NonNull InterstitialAdListener dynamicAdListener) {
         this(adUnitId, dynamicAdListener, Default.EVENT_COUNT);
     }
 
@@ -75,11 +77,11 @@ public class DynamicInterstitialAd extends DynamicBaseAd
      * Constructor to initialize an object of this class.
      *
      * @param adUnitId The ad unit id to be used.
-     * @param dynamicAdListener The dynamic ad listener to be used.
+     * @param dynamicAdListener The interstitial ad listener to be used.
      * @param eventCount The event count to be used.
      */
     public DynamicInterstitialAd(@NonNull String adUnitId,
-            @NonNull DynamicAdListener dynamicAdListener, long eventCount) {
+            @NonNull InterstitialAdListener dynamicAdListener, long eventCount) {
         this.mAdUnitId = adUnitId;
         this.mDynamicAdListener = dynamicAdListener;
         this.mEventCount = eventCount;
@@ -100,7 +102,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
     }
     
     @Override
-    public @NonNull DynamicAdListener getAdListener() {
+    public @NonNull InterstitialAdListener getAdListener() {
         return mDynamicAdListener;
     }
 

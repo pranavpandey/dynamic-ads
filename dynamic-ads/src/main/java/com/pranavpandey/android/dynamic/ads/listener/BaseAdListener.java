@@ -16,12 +16,26 @@
 
 package com.pranavpandey.android.dynamic.ads.listener;
 
-import com.pranavpandey.android.dynamic.ads.listener.factory.BannerAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.InterstitialAdListener;
-import com.pranavpandey.android.dynamic.ads.listener.factory.NativeAdListener;
+import android.content.Context;
+
+import androidx.annotation.NonNull;
 
 /**
- * An interface to listen the dynamic ad events.
+ * An interface to provide basic ads functionality.
  */
-public interface DynamicAdListener extends BannerAdListener,
-        InterstitialAdListener, NativeAdListener { }
+public interface BaseAdListener {
+
+    /**
+     * Returns the context used by this listener.
+     *
+     * @return The context used by this listener.
+     */
+    @NonNull Context getAdContext();
+
+    /**
+     * This method will be called to detect if the ads are enabled for this listener.
+     *
+     * @return {@code true} if the ads are enabled for this listener.
+     */
+    boolean isAdEnabled();
+}
