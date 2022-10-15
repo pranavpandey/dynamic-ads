@@ -32,7 +32,7 @@ import com.pranavpandey.android.dynamic.ads.listener.factory.BannerAdListener;
 import com.pranavpandey.android.dynamic.ads.util.DynamicAdUtils;
 
 /**
- * Helper class to show a banner ad dynamically throughout the app.
+ * A {@link DynamicBaseAd} to show a banner ad dynamically throughout the app.
  */
 public class DynamicBannerAd extends DynamicBaseAd {
 
