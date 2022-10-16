@@ -220,8 +220,8 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initializeAd(com.pranavpandey.android.dynamic.ads.DynamicAd,com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener)">initializeAd</a></span>&#8203;(<a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd,
-            <a href="listener/DynamicAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">DynamicAdListener</a>&nbsp;dynamicAdListener)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initializeAd(com.pranavpandey.android.dynamic.ads.DynamicAd,com.pranavpandey.android.dynamic.ads.listener.BaseAdListener)">initializeAd</a></span>&#8203;(<a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd,
+            <a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener)</code></th>
 <td class="colLast">
 <div class="block">Try to initialize the mobile ads.</div>
 </td>
@@ -270,7 +270,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadConsentForm(com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener,boolean)">loadConsentForm</a></span>&#8203;(<a href="listener/DynamicAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">DynamicAdListener</a>&nbsp;dynamicAdListener,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadConsentForm(com.pranavpandey.android.dynamic.ads.listener.BaseAdListener,boolean)">loadConsentForm</a></span>&#8203;(<a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener,
                boolean&nbsp;force)</code></th>
 <td class="colLast">
 <div class="block">Try to load the consent form.</div>
@@ -278,7 +278,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadConsentInformation(com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener,boolean)">loadConsentInformation</a></span>&#8203;(<a href="listener/DynamicAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">DynamicAdListener</a>&nbsp;dynamicAdListener,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadConsentInformation(com.pranavpandey.android.dynamic.ads.listener.BaseAdListener,boolean)">loadConsentInformation</a></span>&#8203;(<a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener,
                       boolean&nbsp;force)</code></th>
 <td class="colLast">
 <div class="block">Try to request the consent information update.</div>
@@ -356,7 +356,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#showConsentForm(com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener)">showConsentForm</a></span>&#8203;(<a href="listener/DynamicAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">DynamicAdListener</a>&nbsp;dynamicAdListener)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#showConsentForm(com.pranavpandey.android.dynamic.ads.listener.BaseAdListener)">showConsentForm</a></span>&#8203;(<a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener)</code></th>
 <td class="colLast">
 <div class="block">Try to show the consent form.</div>
 </td>
@@ -707,56 +707,56 @@ public&nbsp;com.google.android.ump.ConsentRequestParameters&nbsp;getConsentReque
 </dl>
 </li>
 </ul>
-<a id="loadConsentInformation(com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener,boolean)">
+<a id="loadConsentInformation(com.pranavpandey.android.dynamic.ads.listener.BaseAdListener,boolean)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>loadConsentInformation</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;loadConsentInformation&#8203;(@Nullable
-                                   <a href="listener/DynamicAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">DynamicAdListener</a>&nbsp;dynamicAdListener,
+                                   <a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener,
                                    boolean&nbsp;force)</pre>
 <div class="block">Try to request the consent information update.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>dynamicAdListener</code> - The dynamic ad lister to be used.</dd>
+<dd><code>adListener</code> - The dynamic ad lister to be used.</dd>
 <dd><code>force</code> - <code>true</code> to always show the consent form.</dd>
 </dl>
 </li>
 </ul>
-<a id="loadConsentForm(com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener,boolean)">
+<a id="loadConsentForm(com.pranavpandey.android.dynamic.ads.listener.BaseAdListener,boolean)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>loadConsentForm</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;loadConsentForm&#8203;(@Nullable
-                            <a href="listener/DynamicAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">DynamicAdListener</a>&nbsp;dynamicAdListener,
+                            <a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener,
                             boolean&nbsp;force)</pre>
 <div class="block">Try to load the consent form.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>dynamicAdListener</code> - The dynamic ad lister to be used.</dd>
+<dd><code>adListener</code> - The dynamic ad lister to be used.</dd>
 <dd><code>force</code> - <code>true</code> to always show the consent form.</dd>
 </dl>
 </li>
 </ul>
-<a id="showConsentForm(com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener)">
+<a id="showConsentForm(com.pranavpandey.android.dynamic.ads.listener.BaseAdListener)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>showConsentForm</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;showConsentForm&#8203;(@Nullable
-                            <a href="listener/DynamicAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">DynamicAdListener</a>&nbsp;dynamicAdListener)</pre>
+                            <a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener)</pre>
 <div class="block">Try to show the consent form.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>dynamicAdListener</code> - The dynamic ad lister to be used.</dd>
+<dd><code>adListener</code> - The dynamic ad lister to be used.</dd>
 </dl>
 </li>
 </ul>
-<a id="initializeAd(com.pranavpandey.android.dynamic.ads.DynamicAd,com.pranavpandey.android.dynamic.ads.listener.DynamicAdListener)">
+<a id="initializeAd(com.pranavpandey.android.dynamic.ads.DynamicAd,com.pranavpandey.android.dynamic.ads.listener.BaseAdListener)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -765,12 +765,12 @@ public&nbsp;com.google.android.ump.ConsentRequestParameters&nbsp;getConsentReque
 <pre class="methodSignature">public&nbsp;void&nbsp;initializeAd&#8203;(@Nullable
                          <a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd,
                          @Nullable
-                         <a href="listener/DynamicAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">DynamicAdListener</a>&nbsp;dynamicAdListener)</pre>
+                         <a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener)</pre>
 <div class="block">Try to initialize the mobile ads.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>dynamicAd</code> - The dynamic ad to be initialized.</dd>
-<dd><code>dynamicAdListener</code> - The dynamic ad lister to be used.</dd>
+<dd><code>adListener</code> - The dynamic ad lister to be used.</dd>
 </dl>
 </li>
 </ul>
@@ -861,7 +861,7 @@ public&nbsp;com.google.android.ump.ConsentRequestParameters&nbsp;getConsentReque
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><h5>1.0.2</h5></div>
+<div class="aboutLanguage"><h5>1.1.0</h5></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_bottom">
