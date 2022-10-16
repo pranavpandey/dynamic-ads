@@ -22,7 +22,7 @@ buildscript {
             'buildTools': '33.0.0',
             'dynamic'   : '4.4.6',
 			'gmsAds'    : '20.6.0',
-			'support'   : '6.1.0',
+			'support'   : '6.1.1',
 			'ump'       : '2.0.0'
     ]
 
@@ -68,8 +68,8 @@ ext {
     mavenDir = 'com/pranavpandey/android'
     mavenArtifactId = 'dynamic-ads'
     mavenInceptionYear = '2022'
-    mavenVersion = '1.0.2'
-    mavenVersionCode = 3
+    mavenVersion = '1.1.0'
+    mavenVersionCode = 4
 
     developerId = 'pranavpandey'
     developerName = 'Pranav Pandey'
