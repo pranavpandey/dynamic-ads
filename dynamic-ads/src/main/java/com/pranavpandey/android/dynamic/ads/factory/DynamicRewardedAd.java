@@ -160,6 +160,8 @@ public class DynamicRewardedAd extends DynamicBaseAd {
         }
 
         if (isAdLoaded()) {
+            onCustomiseAd();
+
             return;
         }
 
@@ -182,10 +184,27 @@ public class DynamicRewardedAd extends DynamicBaseAd {
                                 getServerSideVerificationOptions());
                     }
                     mRewardedAd.setFullScreenContentCallback(getFullScreenContentCallback());
+
+                    onCustomiseAd();
                 }
             });
         } catch (Exception ignored) {
         }
+    }
+
+    @Override
+    public void onCustomiseAd() {
+        super.onCustomiseAd();
+
+        onPostAdLoaded();
+    }
+
+    @Override
+    public void onPostAdLoaded() { }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mRewardedAd != null;
     }
 
     @Override
@@ -197,11 +216,6 @@ public class DynamicRewardedAd extends DynamicBaseAd {
         }
 
         getAdListener().onAdDisplay(mRewardedAd);
-    }
-
-    @Override
-    public boolean isAdLoaded() {
-        return mRewardedAd != null;
     }
 
     @Override

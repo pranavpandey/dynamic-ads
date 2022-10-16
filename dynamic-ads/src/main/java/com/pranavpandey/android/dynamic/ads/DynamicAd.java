@@ -173,9 +173,9 @@ public interface DynamicAd {
     void onCustomiseAd();
 
     /**
-     * Try to populate the new ad.
+     * This method will be called after the ad has been loaded.
      */
-    void populateAd();
+    void onPostAdLoaded();
 
     /**
      * Checks whether the ad has been loaded.
@@ -183,6 +183,11 @@ public interface DynamicAd {
      * @return {@code true} if the ad has been loaded.
      */
     boolean isAdLoaded();
+
+    /**
+     * Try to populate the new ad.
+     */
+    void populateAd();
 
     /**
      * Try to resume the paused ad.

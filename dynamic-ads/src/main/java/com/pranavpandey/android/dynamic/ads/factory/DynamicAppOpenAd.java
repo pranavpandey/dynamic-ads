@@ -149,6 +149,8 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
         }
 
         if (isAdLoaded()) {
+            onCustomiseAd();
+
             return;
         }
 
@@ -167,10 +169,29 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
                     mAppOpenAd = appOpenAd;
 
                     mAppOpenAd.setFullScreenContentCallback(getFullScreenContentCallback());
+
+                    onCustomiseAd();
                 }
             });
         } catch (Exception ignored) {
         }
+    }
+
+    @Override
+    public void onCustomiseAd() {
+        super.onCustomiseAd();
+
+        onPostAdLoaded();
+    }
+
+    @Override
+    public void onPostAdLoaded() {
+        populateAd();
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mAppOpenAd != null;
     }
 
     @Override
@@ -182,11 +203,6 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
         }
 
         getAdListener().onAdDisplay(mAppOpenAd);
-    }
-
-    @Override
-    public boolean isAdLoaded() {
-        return mAppOpenAd != null;
     }
 
     @Override

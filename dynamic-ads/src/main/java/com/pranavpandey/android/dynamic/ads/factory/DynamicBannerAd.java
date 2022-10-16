@@ -139,8 +139,7 @@ public class DynamicBannerAd extends DynamicBaseAd {
 
         try {
             if (isAdLoaded()) {
-                onSetAdSize();
-                populateAd();
+                onCustomiseAd();
 
                 return;
             }
@@ -152,19 +151,36 @@ public class DynamicBannerAd extends DynamicBaseAd {
 
             mAdView.setAdListener(new AdListener() {
                 @Override
-                public void onAdLoaded() {
-                    populateAd();
+                public void onAdFailedToLoad(@NonNull LoadAdError adError) {
+                    onAdDestroy();
                 }
 
                 @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-                    onAdDestroy();
+                public void onAdLoaded() {
+                    onCustomiseAd();
                 }
             });
 
             mAdView.loadAd(getAdRequest());
         } catch (Exception ignored) {
         }
+    }
+
+    @Override
+    public void onCustomiseAd() {
+        super.onCustomiseAd();
+
+        onPostAdLoaded();
+    }
+
+    @Override
+    public void onPostAdLoaded() {
+        populateAd();
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mAdView != null;
     }
 
     @Override
@@ -176,11 +192,6 @@ public class DynamicBannerAd extends DynamicBaseAd {
         }
 
         getAdListener().onAdDisplay(mAdView);
-    }
-
-    @Override
-    public boolean isAdLoaded() {
-        return mAdView != null;
     }
 
     @Override

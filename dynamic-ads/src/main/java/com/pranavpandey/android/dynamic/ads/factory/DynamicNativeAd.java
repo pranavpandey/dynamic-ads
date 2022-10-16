@@ -247,7 +247,17 @@ public class DynamicNativeAd extends DynamicBaseAd {
             DynamicAdUtils.setVisibility(iconView, View.GONE);
         }
 
+        onPostAdLoaded();
+    }
+
+    @Override
+    public void onPostAdLoaded() {
         populateAd();
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mNativeAd != null;
     }
 
     @Override
@@ -261,11 +271,6 @@ public class DynamicNativeAd extends DynamicBaseAd {
 
         mAdView.setNativeAd(mNativeAd);
         getAdListener().onAdDisplay(mNativeAd, mParentView, mAdView);
-    }
-
-    @Override
-    public boolean isAdLoaded() {
-        return mNativeAd != null;
     }
 
     @Override

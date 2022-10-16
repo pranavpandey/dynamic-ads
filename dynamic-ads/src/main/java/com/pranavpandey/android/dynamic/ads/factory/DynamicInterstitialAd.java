@@ -176,7 +176,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
         }
 
         if (isAdLoaded()) {
-            populateAd();
+            onCustomiseAd();
 
             return;
         }
@@ -197,11 +197,28 @@ public class DynamicInterstitialAd extends DynamicBaseAd
 
                     mInterstitialAd.setFullScreenContentCallback(getFullScreenContentCallback());
 
-                    populateAd();
+                    onCustomiseAd();
                 }
             });
         } catch (Exception ignored) {
         }
+    }
+
+    @Override
+    public void onCustomiseAd() {
+        super.onCustomiseAd();
+
+        onPostAdLoaded();
+    }
+
+    @Override
+    public void onPostAdLoaded() {
+        populateAd();
+    }
+
+    @Override
+    public boolean isAdLoaded() {
+        return mInterstitialAd != null;
     }
 
     /**
@@ -223,11 +240,6 @@ public class DynamicInterstitialAd extends DynamicBaseAd
         if (getAdListener().getAdEventCount() >= mEventCount) {
             getAdListener().onAdDisplay(mInterstitialAd);
         }
-    }
-
-    @Override
-    public boolean isAdLoaded() {
-        return mInterstitialAd != null;
     }
 
     @Override
