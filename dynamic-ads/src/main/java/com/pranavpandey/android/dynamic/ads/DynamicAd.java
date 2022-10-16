@@ -169,13 +169,17 @@ public interface DynamicAd {
 
     /**
      * This method will be called to do the ad customisations.
+     *
+     * @param loaded {@code true} if the ad was already loaded and using the previous instance.
      */
-    void onCustomiseAd();
+    void onCustomiseAd(boolean loaded);
 
     /**
      * This method will be called after the ad has been loaded.
+     *
+     * @param loaded {@code true} if the ad was already loaded and using the previous instance.
      */
-    void onPostAdLoaded();
+    void onPostAdLoaded(boolean loaded);
 
     /**
      * Checks whether the ad has been loaded.

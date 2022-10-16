@@ -176,7 +176,8 @@ public class DynamicInterstitialAd extends DynamicBaseAd
         }
 
         if (isAdLoaded()) {
-            onCustomiseAd();
+            onCustomiseAd(true);
+            onPostAdLoaded(true);
 
             return;
         }
@@ -197,23 +198,12 @@ public class DynamicInterstitialAd extends DynamicBaseAd
 
                     mInterstitialAd.setFullScreenContentCallback(getFullScreenContentCallback());
 
-                    onCustomiseAd();
+                    onCustomiseAd(false);
+                    onPostAdLoaded(false);
                 }
             });
         } catch (Exception ignored) {
         }
-    }
-
-    @Override
-    public void onCustomiseAd() {
-        super.onCustomiseAd();
-
-        onPostAdLoaded();
-    }
-
-    @Override
-    public void onPostAdLoaded() {
-        populateAd();
     }
 
     @Override

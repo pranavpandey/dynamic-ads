@@ -158,7 +158,8 @@ public class DynamicNativeAd extends DynamicBaseAd {
 
         try {
             if (isAdLoaded()) {
-                onCustomiseAd();
+                onCustomiseAd(true);
+                onPostAdLoaded(true);
                 
                 return;
             }
@@ -169,7 +170,8 @@ public class DynamicNativeAd extends DynamicBaseAd {
                         public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
                             mNativeAd = nativeAd;
 
-                            onCustomiseAd();
+                            onCustomiseAd(false);
+                            onPostAdLoaded(false);
                         }
                     }).build().loadAd(getAdRequest());
         } catch (Exception ignored) {
@@ -177,8 +179,8 @@ public class DynamicNativeAd extends DynamicBaseAd {
     }
 
     @Override
-    public void onCustomiseAd() {
-        super.onCustomiseAd();
+    public void onCustomiseAd(boolean loaded) {
+        super.onCustomiseAd(loaded);
 
         if (!isAdLoaded() || getAdLayoutRes() == LAYOUT_RES_NONE) {
             return;
@@ -246,13 +248,6 @@ public class DynamicNativeAd extends DynamicBaseAd {
         } else {
             DynamicAdUtils.setVisibility(iconView, View.GONE);
         }
-
-        onPostAdLoaded();
-    }
-
-    @Override
-    public void onPostAdLoaded() {
-        populateAd();
     }
 
     @Override

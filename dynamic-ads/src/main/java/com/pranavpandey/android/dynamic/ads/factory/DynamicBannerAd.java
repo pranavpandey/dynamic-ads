@@ -139,7 +139,8 @@ public class DynamicBannerAd extends DynamicBaseAd {
 
         try {
             if (isAdLoaded()) {
-                onCustomiseAd();
+                onCustomiseAd(true);
+                onPostAdLoaded(true);
 
                 return;
             }
@@ -157,25 +158,14 @@ public class DynamicBannerAd extends DynamicBaseAd {
 
                 @Override
                 public void onAdLoaded() {
-                    onCustomiseAd();
+                    onCustomiseAd(false);
+                    onPostAdLoaded(false);
                 }
             });
 
             mAdView.loadAd(getAdRequest());
         } catch (Exception ignored) {
         }
-    }
-
-    @Override
-    public void onCustomiseAd() {
-        super.onCustomiseAd();
-
-        onPostAdLoaded();
-    }
-
-    @Override
-    public void onPostAdLoaded() {
-        populateAd();
     }
 
     @Override

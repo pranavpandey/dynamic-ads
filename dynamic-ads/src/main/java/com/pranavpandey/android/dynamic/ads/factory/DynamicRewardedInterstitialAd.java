@@ -161,7 +161,8 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
         }
 
         if (isAdLoaded()) {
-            onCustomiseAd();
+            onCustomiseAd(true);
+            onPostAdLoaded(true);
 
             return;
         }
@@ -187,7 +188,8 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
                     mRewardedInterstitialAd.setFullScreenContentCallback(
                             getFullScreenContentCallback());
 
-                    onCustomiseAd();
+                    onCustomiseAd(false);
+                    onPostAdLoaded(false);
                 }
             });
         } catch (Exception ignored) {
@@ -195,14 +197,7 @@ public class DynamicRewardedInterstitialAd extends DynamicBaseAd {
     }
 
     @Override
-    public void onCustomiseAd() {
-        super.onCustomiseAd();
-
-        onPostAdLoaded();
-    }
-
-    @Override
-    public void onPostAdLoaded() { }
+    public void onPostAdLoaded(boolean loaded) { }
 
     @Override
     public boolean isAdLoaded() {
