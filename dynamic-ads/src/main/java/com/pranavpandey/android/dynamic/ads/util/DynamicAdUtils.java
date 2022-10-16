@@ -42,7 +42,7 @@ public class DynamicAdUtils {
     /**
      * Factor to calculate the acceptable ad size.
      */
-    public static final float AD_SIZE_FACTOR = 3f;
+    public static final float AD_SIZE_FACTOR = 4f;
 
     /**
      * Returns the ad size for the supplied activity and container.
