@@ -16,8 +16,12 @@ A GDPR-compliant library to show ads via Google AdMob on Android 4.1 (API 16) an
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Sponsor](#sponsor)
-  - [Dependency](#dependency)
+    - [Initialize](#initialize)
+    - [Host](#host)
+    - [Consent](#consent)
+    - [Dynamic Ad](#dynamic-ad)
+    - [Sponsor](#sponsor)
+    - [Dependency](#dependency)
 - [License](#license)
 
 ---
@@ -41,6 +45,134 @@ It supports various ad formats as mentioned in the official Google [AdMob guide]
 Please [sign in][admob sign-in] to or [sign up][admob sign-up] for an AdMob account first.
 
 > For a complete reference, please read the [documentation][documentation].
+
+### Initialize
+
+`DynamicAds` must be initialized once before accessing its methods. Dynamic ad formats do that
+automatically before doing any operations but it should be done manually if anything has to be
+done before.
+
+```java
+// Initialize with application context.
+DynamicAds.initializeInstance(applicationContext);
+```
+
+### Host
+
+`BaseAdListener` is the base class that an ad host like an `activity` must implement.
+It guides the internal framework about how and when an ad should be displayed.
+
+> It is used to create various factory [listeners][ad listeners] to show different ad formats
+and they should be implemented according to the requirements.
+
+### Consent
+
+It provides built-in support for the consent form required to be shown in `GDPR` regions before
+initializing any of the ads. It uses [User Messaging Platform (UMP)][admob ump] underneath to do
+all the heavy lifting and provides a simple yet customizable interface.
+
+```java
+// Show a consent form.
+DynamicAds.getInstance()
+        // Set the consent request parameters required to load the consent information.
+        .setConsentRequestParameters(consentRequestParameters)
+        // Try to show the consent form if available
+        .showConsentForm(dynamicAdListener);
+
+// Other methods related to the consent form.
+DynamicAds.getInstance()
+        // Checks whether a consent information is available.
+        .isConsentInformationAvailable()
+        // Checks whether a consent form is available.
+        .isConsentFormAvailable()
+        // Checks whether a consent form is visible to the user.
+        .isConsentFormVisible()
+        // Checks whether a consent is required from the user.
+        .isConsentRequired()
+        // Returns the status of the consent information.
+        .getConsetStatus();
+```
+
+### Dynamic Ad
+
+`DynamicAd` is the base class to implement various [ad formats][ad formats].
+
+```java
+/**
+ * An activity to host a dynamic ad.
+ */
+public AdHostActivity extends Activity implements BannerAdListener {
+    
+    ...
+        
+    // Initialize the banner ad.
+    mDynamicBannerAd = new DynamicBannerAd(AD_UNIT_ID, this) {
+        ...
+    
+        @Override
+        public @NonNull AdRequest getAdRequest() {
+            return new AdRequest.Builder().build();
+        }
+    
+        @Override
+        public @NonNull RequestConfiguration getAdRequestConfigurations() {
+            return MobileAds.getRequestConfiguration().toBuilder()
+                    .setTagForChildDirectedTreatment(
+                    RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE)
+                    .setTagForUnderAgeOfConsent(
+                    RequestConfiguration.TAG_FOR_UNDER_AGE_OF_CONSENT_TRUE)
+                    .setMaxAdContentRating(RequestConfiguration.MAX_AD_CONTENT_RATING_G)
+                    .build();
+        }
+          
+        ...
+    };
+
+    @Override
+    public @NonNull Context getAdContext() {
+        // Return context for this host.
+        return this;
+    }
+
+    @Override
+    public boolean isAdEnabled() {
+        // Ads are enabled for this host.
+        return true;
+    }
+    
+    ...
+
+    @Override
+    public void onAdDisplay(@NonNull AdView adView) {
+        // Add the ad view to a container to make it visible.
+        DynamicViewUtils.addView(container, adView, true);
+    }
+    
+    ...
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Resume a dynamic ad if supported.
+        DynamicAds.onAdResume(mDynamicBannerAd);
+    }
+
+    @Override
+    public void onPause() {
+        // Pause a dynamic ad if supported.
+        DynamicAds.onAdPause(mDynamicBannerAd);
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        // Destroy a dynamic ad if supported.
+        DynamicAds.onAdDestroy(mDynamicBannerAd);
+        super.onDestroy();
+    }
+}
+```
 
 ### Sponsor
 
@@ -84,8 +216,11 @@ Pranav Pandey
 [androidx-migrate]: https://developer.android.com/jetpack/androidx/migrate
 [documentation]: https://pranavpandey.github.io/dynamic-ads
 [sponsor]: https://github.com/sponsors/pranavpandey
+[admob ump]: https://developers.google.com/admob/ump/android/quick-start
 [admob sign-in]: https://admob.google.com/home
 [admob sign-up]: https://support.google.com/admob/answer/7356219
 [admob guide]: https://developers.google.com/admob/android/quick-start
+[ad listeners]: https://github.com/pranavpandey/dynamic-ads/blob/main/dynamic-ads/src/main/java/com/pranavpandey/android/dynamic/ads/listener/factory
+[ad formats]: https://github.com/pranavpandey/dynamic-ads/blob/main/dynamic-ads/src/main/java/com/pranavpandey/android/dynamic/ads/factory
 [dynamic-utils]: https://github.com/pranavpandey/dynamic-utils
 [dynamic-support]: https://github.com/pranavpandey/dynamic-support
