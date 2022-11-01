@@ -21,9 +21,9 @@ buildscript {
             'targetSdk' : 33,
             'buildTools': '33.0.0',
             'dynamic'   : '4.4.6',
-			'gmsAds'    : '20.6.0',
-			'support'   : '6.1.1',
-			'ump'       : '2.0.0'
+            'gmsAds'    : '20.6.0',
+            'support'   : '6.1.1',
+            'ump'       : '2.0.0'
     ]
 
     repositories {
@@ -32,7 +32,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.0-alpha10'
+        classpath 'com.android.tools.build:gradle:8.0.0-alpha06'
     }
 }
 
