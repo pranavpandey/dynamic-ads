@@ -16,6 +16,8 @@
 
 package com.pranavpandey.android.dynamic.ads;
 
+import android.annotation.SuppressLint;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.ads.AdRequest;
@@ -27,6 +29,7 @@ import com.google.android.gms.ads.RequestConfiguration;
  */
 public abstract class DynamicBaseAd implements DynamicAd {
 
+    @SuppressLint("VisibleForTests")
     @Override
     public @NonNull AdRequest getAdRequest() {
         return new AdRequest.Builder().build();
