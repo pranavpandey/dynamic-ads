@@ -44,6 +44,11 @@ public abstract class DynamicBaseAd implements DynamicAd {
     }
 
     @Override
+    public boolean isAdAllowed() {
+        return true;
+    }
+
+    @Override
     public void onCustomiseAd(boolean loaded) { }
 
     @Override

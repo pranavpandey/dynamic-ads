@@ -182,28 +182,36 @@ public class DynamicInterstitialAd extends DynamicBaseAd
             return;
         }
 
-        try {
-            InterstitialAd.load(getAdListener().getAdContext(), getAdUnitId(),
-                    getAdRequest(), new InterstitialAdLoadCallback() {
-                @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                    super.onAdFailedToLoad(loadAdError);
-                }
+        if (isAdAllowed()) {
+            try {
+                InterstitialAd.load(getAdListener().getAdContext(), getAdUnitId(),
+                        getAdRequest(), new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        super.onAdFailedToLoad(loadAdError);
+                    }
 
-                @Override
-                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                    super.onAdLoaded(interstitialAd);
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        super.onAdLoaded(interstitialAd);
 
-                    mInterstitialAd = interstitialAd;
+                        mInterstitialAd = interstitialAd;
 
-                    mInterstitialAd.setFullScreenContentCallback(getFullScreenContentCallback());
+                        mInterstitialAd.setFullScreenContentCallback(
+                                getFullScreenContentCallback());
 
-                    onCustomiseAd(false);
-                    onPostAdLoaded(false);
-                }
-            });
-        } catch (Exception ignored) {
+                        onCustomiseAd(false);
+                        onPostAdLoaded(false);
+                    }
+                });
+            } catch (Exception ignored) {
+            }
         }
+    }
+
+    @Override
+    public boolean isAdAllowed() {
+        return getAdListener().getAdEventCount() >= mEventCount;
     }
 
     @Override
@@ -227,7 +235,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
             return;
         }
 
-        if (getAdListener().getAdEventCount() >= mEventCount) {
+        if (isAdAllowed()) {
             getAdListener().onAdDisplay(mInterstitialAd);
         }
     }

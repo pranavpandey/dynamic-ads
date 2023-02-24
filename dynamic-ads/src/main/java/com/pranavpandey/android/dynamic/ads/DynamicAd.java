@@ -182,6 +182,13 @@ public interface DynamicAd {
     void onPostAdLoaded(boolean loaded);
 
     /**
+     * Checks if any constraints should be matched before loading the ad.
+     *
+     * @return {@code true} if the ad is allowed to be loaded.
+     */
+    boolean isAdAllowed();
+
+    /**
      * Checks whether the ad has been loaded.
      *
      * @return {@code true} if the ad has been loaded.
