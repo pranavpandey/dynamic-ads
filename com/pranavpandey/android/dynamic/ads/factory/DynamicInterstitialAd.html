@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -274,53 +274,60 @@ implements <a href="https://developer.android.com/reference/android/content/Shar
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isAdAllowed()">isAdAllowed</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Checks if any constraints should be matched before loading the ad.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isAdLoaded()">isAdLoaded</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Checks whether the ad has been loaded.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onAdCreate()">onAdCreate</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Try to create the new ad.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onAdDestroy()">onAdDestroy</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Try to destroy the ad instances and do cleanup.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onAdPause()">onAdPause</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Try to pause the running ad.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onAdResume()">onAdResume</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Try to resume the paused ad.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onInitialize()">onInitialize</a></span>()</code></th>
 <td class="colLast">
 <div class="block">This method will be called to do the initialization.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String)">onSharedPreferenceChanged</a></span>&#8203;(<a href="https://developer.android.com/reference/android/content/SharedPreferences.html?is-external=true" title="class or interface in android.content" class="externalLink">SharedPreferences</a>&nbsp;sharedPreferences,
                          java.lang.String&nbsp;key)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#populateAd()">populateAd</a></span>()</code></th>
 <td class="colLast">
@@ -542,6 +549,25 @@ protected&nbsp;com.google.android.gms.ads.FullScreenContentCallback&nbsp;getFull
 </dl>
 </li>
 </ul>
+<a id="isAdAllowed()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isAdAllowed</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isAdAllowed()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../DynamicAd.html#isAdAllowed()">DynamicAd</a></code></span></div>
+<div class="block">Checks if any constraints should be matched before loading the ad.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../DynamicAd.html#isAdAllowed()">isAdAllowed</a></code>&nbsp;in interface&nbsp;<code><a href="../DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../DynamicBaseAd.html#isAdAllowed()">isAdAllowed</a></code>&nbsp;in class&nbsp;<code><a href="../DynamicBaseAd.html" title="class in com.pranavpandey.android.dynamic.ads">DynamicBaseAd</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> if the ad is allowed to be loaded.</dd>
+</dl>
+</li>
+</ul>
 <a id="isAdLoaded()">
 <!--   -->
 </a>
@@ -667,7 +693,7 @@ protected&nbsp;com.google.android.gms.ads.FullScreenContentCallback&nbsp;getFull
 <li><a href="../../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><h5>1.1.0</h5></div>
+<div class="aboutLanguage"><h5>1.2.0</h5></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_bottom">
