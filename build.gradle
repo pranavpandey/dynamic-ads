@@ -20,9 +20,10 @@ buildscript {
             'minSdk'    : 16,
             'targetSdk' : 34,
             'buildTools': '34.0.0',
-            'dynamic'   : '4.4.8',
+            'dynamic'   : '4.5.1',
             'gmsAds'    : '20.6.0',
-            'support'   : '6.2.1',
+            'kotlin'    : '1.8.22',
+            'support'   : '6.3.0',
             'ump'       : '2.0.0'
     ]
 
