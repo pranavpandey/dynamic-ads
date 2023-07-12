@@ -39,6 +39,9 @@ public interface DynamicAd {
      */
     int LAYOUT_RES_NONE = -1;
 
+    /**
+     * Class name for the dynamic widget.
+     */
     String CLASS_DYNAMIC_WIDGET =
             "com.pranavpandey.android.dynamic.support.widget.base.DynamicWidget";
 
