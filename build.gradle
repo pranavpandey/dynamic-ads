@@ -24,7 +24,7 @@ buildscript {
             'gmsAds'    : '20.6.0',
             'kotlin'    : '1.8.22',
             'support'   : '6.3.0',
-            'ump'       : '2.0.0'
+            'ump'       : '2.1.0'
     ]
 
     repositories {

@@ -340,6 +340,21 @@ public class DynamicAds {
     }
 
     /**
+     * Returns whether the app has completed the necessary steps for gathering updated
+     * user consent.
+     *
+     * @return {@code true} if the app has completed the necessary steps for gathering updated
+     *         user consent.
+     */
+    public boolean canRequestAds() {
+        if (getConsentInformation() != null) {
+            return getConsentInformation().canRequestAds();
+        }
+
+        return false;
+    }
+
+    /**
      * Checks whether a consent is required from the user.
      *
      * @return {@code true} if a consent is required from the user.
@@ -454,7 +469,7 @@ public class DynamicAds {
             showConsentForm(adListener);
         }
 
-        if (isConsentRequired()) {
+        if (isConsentRequired() || !canRequestAds()) {
             return;
         }
 
