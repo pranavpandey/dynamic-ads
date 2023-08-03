@@ -19,6 +19,7 @@ package com.pranavpandey.android.dynamic.ads.util;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -31,6 +32,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.pranavpandey.android.dynamic.util.DynamicWindowUtils;
 
@@ -87,6 +89,29 @@ public class DynamicAdUtils {
      */
     public static @NonNull AdSize getAdSize(@Nullable Context activity) {
         return getAdSize(activity, null);
+    }
+
+    /**
+     * Returns the orientation for the app open ad.
+     *
+     * @param activity The activity to retrieve the screen orientation.
+     *
+     * @return The orientation for the app open ad.
+     *
+     * @see AppOpenAd#APP_OPEN_AD_ORIENTATION_PORTRAIT
+     * @see AppOpenAd#APP_OPEN_AD_ORIENTATION_LANDSCAPE
+     */
+    public static @AppOpenAd.AppOpenAdOrientation int getAppOpenAdOrientation(
+            @Nullable Context activity) {
+        switch (DynamicWindowUtils.getScreenOrientation(activity)) {
+            case ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE:
+            case ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE:
+                return AppOpenAd.APP_OPEN_AD_ORIENTATION_LANDSCAPE;
+            case ActivityInfo.SCREEN_ORIENTATION_PORTRAIT:
+            case ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT:
+            default:
+                return AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT;
+        }
     }
 
     /**
