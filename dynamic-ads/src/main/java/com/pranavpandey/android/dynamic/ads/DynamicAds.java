@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Pranav Pandey
+ * Copyright 2022-2023 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -143,6 +143,23 @@ public class DynamicAds {
         }
 
         return sInstance;
+    }
+
+    /**
+     * Returns whether the ad is visible to the user.
+     *
+     * @param dynamicAd The dynamic ad to be used.
+     *
+     * @return {@code true} if the ad is visible to the user.
+     *
+     * @see DynamicAd#isAdVisible()
+     */
+    public static boolean isAdVisible(@Nullable DynamicAd dynamicAd) {
+        if (dynamicAd != null) {
+            return dynamicAd.isAdVisible();
+        }
+
+        return false;
     }
 
     /**

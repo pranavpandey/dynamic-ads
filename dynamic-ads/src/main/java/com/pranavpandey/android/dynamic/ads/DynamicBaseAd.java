@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Pranav Pandey
+ * Copyright 2022-2023 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,11 @@ import com.google.android.gms.ads.RequestConfiguration;
  * An abstract class to implement a {@link DynamicAd}.
  */
 public abstract class DynamicBaseAd implements DynamicAd {
+
+    /**
+     * {@code true} if this add is visible to the user.
+     */
+    private boolean mAdVisible;
 
     @SuppressLint("VisibleForTests")
     @Override
@@ -61,4 +66,23 @@ public abstract class DynamicBaseAd implements DynamicAd {
 
     @Override
     public void populateAd() { }
+
+    @Override
+    public boolean isAdVisible() {
+        return mAdVisible;
+    }
+
+    /**
+     * Sets whether this ad is visible to the user.
+     *
+     * @param adVisible {@code true} if this add is visible to the user.
+     */
+    public void setAdVisible(boolean adVisible) {
+        this.mAdVisible = adVisible;
+    }
+
+    @Override
+    public void onAdDestroy() {
+        setAdVisible(false);
+    }
 }

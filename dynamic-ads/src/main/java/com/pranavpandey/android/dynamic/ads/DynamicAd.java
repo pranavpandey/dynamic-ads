@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Pranav Pandey
+ * Copyright 2022-2023 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -202,6 +202,13 @@ public interface DynamicAd {
      * Try to populate the new ad.
      */
     void populateAd();
+
+    /**
+     * Returns whether this ad is visible to the user.
+     *
+     * @return {@code true} if this ad is visible to the user.
+     */
+    boolean isAdVisible();
 
     /**
      * Try to resume the paused ad.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Pranav Pandey
+ * Copyright 2022-2023 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -158,6 +158,7 @@ public class DynamicInterstitialAd extends DynamicBaseAd
             public void onAdShowedFullScreenContent() {
                 super.onAdShowedFullScreenContent();
 
+                setAdVisible(true);
                 getAdListener().resetAdEventCount();
             }
         };
@@ -254,17 +255,20 @@ public class DynamicInterstitialAd extends DynamicBaseAd
 
     @Override
     public void onAdDestroy() {
+        super.onAdDestroy();
+
         mInterstitialAd = null;
     }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+            @Nullable String key) {
         if (DynamicPreferences.isNullKey(key)) {
             return;
         }
 
         if (Key.EVENT_COUNT.equals(key)) {
-            populateAd();
+            DynamicAds.getInstance().postAd(this);
         }
     }
 }
