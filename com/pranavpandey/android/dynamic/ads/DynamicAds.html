@@ -107,61 +107,72 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createAd(com.pranavpandey.android.dynamic.ads.DynamicAd)" class="member-name-link">createAd</a><wbr>(<a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#canRequestAds()" class="member-name-link">canRequestAds</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Try to create a dynamic ad.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static long</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getAdEventCount()" class="member-name-link">getAdEventCount</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Returns the dynamic ad event count from the shared preferences.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.google.android.ump.ConsentForm</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConsentForm()" class="member-name-link">getConsentForm</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get the consent form if available.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.google.android.ump.ConsentInformation</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConsentInformation()" class="member-name-link">getConsentInformation</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get the consent information if available.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.google.android.ump.ConsentRequestParameters</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConsentRequestParameters()" class="member-name-link">getConsentRequestParameters</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the consent request parameters required to load the consent information.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConsentStatus()" class="member-name-link">getConsentStatus</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the status of the consent information.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/android/content/Context.html" title="class or interface in android.content" class="external-link">Context</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getContext()" class="member-name-link">getContext</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the context used by this instance.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/android/os/Handler.html" title="class or interface in android.os" class="external-link">Handler</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getHandler()" class="member-name-link">getHandler</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the main thread handler to publish results.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="DynamicAds.html" title="class in com.pranavpandey.android.dynamic.ads">DynamicAds</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getInstance()" class="member-name-link">getInstance</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Retrieves the singleton instance of <a href="DynamicAds.html" title="class in com.pranavpandey.android.dynamic.ads"><code>DynamicAds</code></a>.</div>
+<div class="block">Returns whether the app has completed the necessary steps for gathering updated
+ user consent.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#initializeAd(com.pranavpandey.android.dynamic.ads.DynamicAd,com.pranavpandey.android.dynamic.ads.listener.BaseAdListener)" class="member-name-link">initializeAd</a><wbr>(<a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd,
- <a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createAd(com.pranavpandey.android.dynamic.ads.DynamicAd)" class="member-name-link">createAd</a><wbr>(<a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Try to create a dynamic ad.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static long</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getAdEventCount()" class="member-name-link">getAdEventCount</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Returns the dynamic ad event count from the shared preferences.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.google.android.ump.ConsentForm</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConsentForm()" class="member-name-link">getConsentForm</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the consent form if available.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.google.android.ump.ConsentInformation</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConsentInformation()" class="member-name-link">getConsentInformation</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the consent information if available.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.google.android.ump.ConsentRequestParameters</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConsentRequestParameters()" class="member-name-link">getConsentRequestParameters</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the consent request parameters required to load the consent information.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConsentStatus()" class="member-name-link">getConsentStatus</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the status of the consent information.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/android/content/Context.html" title="class or interface in android.content" class="external-link">Context</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getContext()" class="member-name-link">getContext</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the context used by this instance.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://developer.android.com/reference/android/os/Handler.html" title="class or interface in android.os" class="external-link">Handler</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getHandler()" class="member-name-link">getHandler</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the main thread handler to publish results.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="DynamicAds.html" title="class in com.pranavpandey.android.dynamic.ads">DynamicAds</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getInstance()" class="member-name-link">getInstance</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Retrieves the singleton instance of <a href="DynamicAds.html" title="class in com.pranavpandey.android.dynamic.ads"><code>DynamicAds</code></a>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#initializeAd(com.pranavpandey.android.dynamic.ads.DynamicAd,com.pranavpandey.android.dynamic.ads.listener.BaseAdListener)" class="member-name-link">initializeAd</a><wbr>(<a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd,
+ <a href="listener/BaseAdListener.html" title="interface in com.pranavpandey.android.dynamic.ads.listener">BaseAdListener</a>&nbsp;adListener)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Try to initialize the mobile ads.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#initializeInstance(android.content.Context)" class="member-name-link">initializeInstance</a><wbr>(<a href="https://developer.android.com/reference/android/content/Context.html" title="class or interface in android.content" class="external-link">Context</a>&nbsp;context)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#initializeInstance(android.content.Context)" class="member-name-link">initializeInstance</a><wbr>(<a href="https://developer.android.com/reference/android/content/Context.html" title="class or interface in android.content" class="external-link">Context</a>&nbsp;context)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Initialize ads when application starts.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isAdVisible(com.pranavpandey.android.dynamic.ads.DynamicAd)" class="member-name-link">isAdVisible</a><wbr>(<a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Returns whether the ad is visible to the user.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isConsentFormAvailable()" class="member-name-link">isConsentFormAvailable</a>()</code></div>
@@ -295,6 +306,26 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>The singleton instance of <a href="DynamicAds.html" title="class in com.pranavpandey.android.dynamic.ads"><code>DynamicAds</code></a>.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isAdVisible(com.pranavpandey.android.dynamic.ads.DynamicAd)">
+<h3>isAdVisible</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isAdVisible</span><wbr><span class="parameters">(@Nullable
+ <a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a>&nbsp;dynamicAd)</span></div>
+<div class="block">Returns whether the ad is visible to the user.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>dynamicAd</code> - The dynamic ad to be used.</dd>
+<dt>Returns:</dt>
+<dd><code>true</code> if the ad is visible to the user.</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list">
+<li><a href="DynamicAd.html#isAdVisible()"><code>DynamicAd.isAdVisible()</code></a></li>
+</ul>
+</dd>
 </dl>
 </section>
 </li>
@@ -545,6 +576,19 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>The status of the consent information.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="canRequestAds()">
+<h3>canRequestAds</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canRequestAds</span>()</div>
+<div class="block">Returns whether the app has completed the necessary steps for gathering updated
+ user consent.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> if the app has completed the necessary steps for gathering updated
+         user consent.</dd>
 </dl>
 </section>
 </li>

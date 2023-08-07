@@ -161,6 +161,16 @@ implements <a href="DynamicAd.html" title="interface in com.pranavpandey.android
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Checks if any constraints should be matched before loading the ad.</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isAdVisible()" class="member-name-link">isAdVisible</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns whether this ad is visible to the user.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onAdDestroy()" class="member-name-link">onAdDestroy</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Try to destroy the ad instances and do cleanup.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onCustomiseAd(boolean)" class="member-name-link">onCustomiseAd</a><wbr>(boolean&nbsp;loaded)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
@@ -176,6 +186,11 @@ implements <a href="DynamicAd.html" title="interface in com.pranavpandey.android
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Try to populate the new ad.</div>
 </div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAdVisible(boolean)" class="member-name-link">setAdVisible</a><wbr>(boolean&nbsp;adVisible)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets whether this ad is visible to the user.</div>
+</div>
 </div>
 </div>
 </div>
@@ -184,7 +199,7 @@ implements <a href="DynamicAd.html" title="interface in com.pranavpandey.android
 <code><a href="https://developer.android.com/reference/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://developer.android.com/reference/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-com.pranavpandey.android.dynamic.ads.DynamicAd">Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.ads.<a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a></h3>
-<code><a href="DynamicAd.html#getAdLayoutRes()">getAdLayoutRes</a>, <a href="DynamicAd.html#getAdListener()">getAdListener</a>, <a href="DynamicAd.html#getAdUnitId()">getAdUnitId</a>, <a href="DynamicAd.html#getConsentForm()">getConsentForm</a>, <a href="DynamicAd.html#getConsentInformation()">getConsentInformation</a>, <a href="DynamicAd.html#isAdLoaded()">isAdLoaded</a>, <a href="DynamicAd.html#onAdCreate()">onAdCreate</a>, <a href="DynamicAd.html#onAdDestroy()">onAdDestroy</a>, <a href="DynamicAd.html#onAdPause()">onAdPause</a>, <a href="DynamicAd.html#onAdResume()">onAdResume</a>, <a href="DynamicAd.html#onInitialize()">onInitialize</a></code></div>
+<code><a href="DynamicAd.html#getAdLayoutRes()">getAdLayoutRes</a>, <a href="DynamicAd.html#getAdListener()">getAdListener</a>, <a href="DynamicAd.html#getAdUnitId()">getAdUnitId</a>, <a href="DynamicAd.html#getConsentForm()">getConsentForm</a>, <a href="DynamicAd.html#getConsentInformation()">getConsentInformation</a>, <a href="DynamicAd.html#isAdLoaded()">isAdLoaded</a>, <a href="DynamicAd.html#onAdCreate()">onAdCreate</a>, <a href="DynamicAd.html#onAdPause()">onAdPause</a>, <a href="DynamicAd.html#onAdResume()">onAdResume</a>, <a href="DynamicAd.html#onInitialize()">onInitialize</a></code></div>
 </section>
 </li>
 </ul>
@@ -291,6 +306,43 @@ implements <a href="DynamicAd.html" title="interface in com.pranavpandey.android
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="DynamicAd.html#populateAd()">populateAd</a></code>&nbsp;in interface&nbsp;<code><a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a></code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isAdVisible()">
+<h3>isAdVisible</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isAdVisible</span>()</div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="DynamicAd.html#isAdVisible()">DynamicAd</a></code></span></div>
+<div class="block">Returns whether this ad is visible to the user.</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="DynamicAd.html#isAdVisible()">isAdVisible</a></code>&nbsp;in interface&nbsp;<code><a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a></code></dd>
+<dt>Returns:</dt>
+<dd><code>true</code> if this ad is visible to the user.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setAdVisible(boolean)">
+<h3>setAdVisible</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAdVisible</span><wbr><span class="parameters">(boolean&nbsp;adVisible)</span></div>
+<div class="block">Sets whether this ad is visible to the user.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>adVisible</code> - <code>true</code> if this add is visible to the user.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="onAdDestroy()">
+<h3>onAdDestroy</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onAdDestroy</span>()</div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="DynamicAd.html#onAdDestroy()">DynamicAd</a></code></span></div>
+<div class="block">Try to destroy the ad instances and do cleanup.</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="DynamicAd.html#onAdDestroy()">onAdDestroy</a></code>&nbsp;in interface&nbsp;<code><a href="DynamicAd.html" title="interface in com.pranavpandey.android.dynamic.ads">DynamicAd</a></code></dd>
 </dl>
 </section>
 </li>
