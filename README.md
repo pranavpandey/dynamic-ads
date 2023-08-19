@@ -9,6 +9,7 @@ A GDPR-compliant library to show ads via Google AdMob on Android 4.1 (API 16) an
 
 > It uses [AndroidX][androidx] so, first [migrate][androidx-migrate] your project to AndroidX.
 <br/>It is dependent on Java 8 due to the dependency on [Dynamic Utils][dynamic-utils].
+<br/>Since v1.3.0, it is targeting Java 17 to provide maximum compatibility.
 
 ---
 
