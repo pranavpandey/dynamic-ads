@@ -42,7 +42,7 @@ android {
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:${versions.kotlin}"))
 
-    api "com.pranavpandey.android:dynamic-utils:${versions.dynamic}"
+    api "com.pranavpandey.android:dynamic-preferences:${versions.preferences}"
     api "com.google.android.gms:play-services-ads-lite:${versions.gmsAds}"
     api "com.google.android.ump:user-messaging-platform:${versions.ump}"
     implementation "com.pranavpandey.android:dynamic-support:${versions.support}"
