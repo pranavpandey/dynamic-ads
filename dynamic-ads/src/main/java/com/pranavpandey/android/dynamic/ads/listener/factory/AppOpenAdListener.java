@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 Pranav Pandey
+ * Copyright 2022-2024 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,11 @@ public interface AppOpenAdListener extends BaseAdListener {
      * This method will be called to get the desired ad orientation.
      *
      * @return The desired ad orientation.
+     *
+     * @deprecated The GMS Ads SDK now determines the orientation at request time,
+     *             matching the behavior of other full-screen formats.
      */
+    @Deprecated
     @AppOpenAd.AppOpenAdOrientation int getAdOrientation();
 
     /**

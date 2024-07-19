@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 Pranav Pandey
+ * Copyright 2022-2024 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -159,7 +159,7 @@ public class DynamicAppOpenAd extends DynamicBaseAd {
 
         try {
             AppOpenAd.load(getAdListener().getAdContext(), getAdUnitId(), getAdRequest(),
-                    getAdListener().getAdOrientation(), new AppOpenAd.AppOpenAdLoadCallback() {
+                    new AppOpenAd.AppOpenAdLoadCallback() {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                     super.onAdFailedToLoad(loadAdError);
